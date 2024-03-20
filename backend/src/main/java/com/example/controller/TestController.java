@@ -18,7 +18,7 @@ public class TestController {
         return requestBody;
     }
 
-    @GetMapping("/test3ggg")
+    @GetMapping("/test3")
     public ExampleData getExampleData() {
         return new ExampleData("Jacob", 20, "jcb12@example.com");
     }
