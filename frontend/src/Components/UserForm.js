@@ -5,14 +5,14 @@ const UserForm = () => {
   const [userGenre, setUserGenre] = useState("Drama");
   const [userWorkingDay, setuserWorkingDay] = useState(false);
 
-  function sendUserDataHandler(userData){
-    fetch('http://localhost:8080/receive-json',{
-      method:'POST',
-      body:JSON.stringify(userData),
-      headers:{
-        'Content-Type':'application/json'
-      }
-    })
+  function sendUserDataHandler(userData) {
+    fetch("http://localhost:8080/receive-json", {
+      method: "POST",
+      body: JSON.stringify(userData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   }
 
   function submitHandler(event) {
