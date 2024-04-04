@@ -1,19 +1,11 @@
 import { useState } from "react";
 
+import userDataHandler from "./userDataHander";
+
 const UserForm = () => {
   const [userMood, setUserMood] = useState("Happy");
   const [userGenre, setUserGenre] = useState("Drama");
   const [userWorkingDay, setuserWorkingDay] = useState(false);
-
-  function sendUserDataHandler(userData) {
-    fetch("http://localhost:8080/receive-json", {
-      method: "POST",
-      body: JSON.stringify(userData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  }
 
   function submitHandler(event) {
     event.preventDefault();
@@ -22,7 +14,7 @@ const UserForm = () => {
       genre: userGenre,
       workingDay: userWorkingDay,
     };
-    sendUserDataHandler(userData);
+    userDataHandler(userData);
   }
 
   return (
