@@ -61,5 +61,18 @@ public class MovieController {
         return true;
     }
 
+    @GetMapping("/findMovie")
+    public Movie findBestMovie(
+            @RequestParam String frameOfMind,
+            @RequestParam String genre,
+            @RequestParam boolean workingDay){
+        Movie movie = new Movie();
+
+        //logika wybierająca wybór filmu
+
+
+        return movie;
+    }
+
 
 }

@@ -1,19 +1,11 @@
 import { useState } from "react";
 
+import userDataHandler from "./userDataHander";
+
 const UserForm = () => {
   const [userMood, setUserMood] = useState("Happy");
   const [userGenre, setUserGenre] = useState("Drama");
   const [userWorkingDay, setuserWorkingDay] = useState(false);
-
-  function sendUserDataHandler(userData) {
-    fetch("http://localhost:8080/receive-json", {
-      method: "POST",
-      body: JSON.stringify(userData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  }
 
   function submitHandler(event) {
     event.preventDefault();
@@ -22,13 +14,13 @@ const UserForm = () => {
       genre: userGenre,
       workingDay: userWorkingDay,
     };
-    sendUserDataHandler(userData);
+    userDataHandler(userData);
   }
 
   return (
     <form className="UserForm" onSubmit={submitHandler}>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <label for="mood">How are you today?</label>
+        <label htmlfor="mood">How are you today?</label>
         <select
           id="mood"
           name="mood"
@@ -50,7 +42,7 @@ const UserForm = () => {
           justifyContent: "space-between",
         }}
       >
-        <label for="genre">What genre do you like?</label>
+        <label htmlfor="genre">What genre do you like?</label>
         <select
           id="genre"
           name="genre"
@@ -72,7 +64,7 @@ const UserForm = () => {
           justifyContent: "space-between",
         }}
       >
-        <label for="workingDay">Did you work today?</label>
+        <label htmlfor="workingDay">Did you work today?</label>
         <div>
           <input
             type="checkbox"
@@ -84,7 +76,7 @@ const UserForm = () => {
               setuserWorkingDay(e.target.checked);
             }}
           />
-          <label for="workingDay">Worked</label>
+          <label htmlfor="workingDay">Worked</label>
         </div>
       </div>
       <button className="button-submit-UserForm">Find movie</button>
