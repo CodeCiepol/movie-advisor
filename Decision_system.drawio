@@ -1,9 +1,21 @@
-<mxfile host="app.diagrams.net" modified="2024-04-12T12:00:13.458Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0" version="24.2.3" etag="Iw8ujOPAcCKuO7mfILeu" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-12T12:04:01.822Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0" etag="inzPV7ZMLA-SCK9CuE8B" version="24.2.3" type="github">
   <diagram name="Strona-1" id="ttXoSirOUBznSJBImnJa">
-    <mxGraphModel>
+    <mxGraphModel dx="2389" dy="818" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="wMrsFuOgcD0PORIPJlcn-1" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="364" y="380" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="wMrsFuOgcD0PORIPJlcn-2" value="&lt;div&gt;USER:&lt;/div&gt;&lt;div&gt;mood:&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
+          <mxGeometry x="-20" y="50" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="wMrsFuOgcD0PORIPJlcn-3" value="&lt;div&gt;MOVIE:&lt;/div&gt;&lt;div&gt;title:&lt;/div&gt;&lt;div&gt;genre:&lt;/div&gt;&lt;div&gt;vote avg:&lt;/div&gt;&lt;div&gt;desc:&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
+          <mxGeometry x="289" y="50" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="wMrsFuOgcD0PORIPJlcn-4" value="START" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="364" y="230" width="100" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
