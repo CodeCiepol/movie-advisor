@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-04-16T17:45:49.653Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0" etag="x53RjGvjVKDKtXf6Es9r" version="24.2.5" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-16T17:46:17.549Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 OPR/108.0.0.0" etag="dMI4CIA-oEsE3NpK0_jq" version="24.2.5" type="github">
   <diagram name="Strona-1" id="ttXoSirOUBznSJBImnJa">
-    <mxGraphModel dx="3058" dy="1169" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2798" dy="1059" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -19,7 +19,7 @@
         <mxCell id="wMrsFuOgcD0PORIPJlcn-5" value="&lt;div&gt;MOVIE_desc:&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;None&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" parent="1" vertex="1">
           <mxGeometry x="570" y="40" width="250" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="kH90dR4RZARtfzA0eED5-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="wMrsFuOgcD0PORIPJlcn-6" target="wMrsFuOgcD0PORIPJlcn-16">
+        <mxCell id="kH90dR4RZARtfzA0eED5-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="wMrsFuOgcD0PORIPJlcn-6" target="wMrsFuOgcD0PORIPJlcn-16" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="wMrsFuOgcD0PORIPJlcn-6" value="&lt;div&gt;get user data: &lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;mood:&lt;/div&gt;&lt;div&gt;genre:&lt;/div&gt;&lt;div&gt;workingDay:&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" parent="1" vertex="1">
@@ -28,22 +28,22 @@
         <mxCell id="wMrsFuOgcD0PORIPJlcn-13" value="Working day?" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="690" y="600" width="120" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="kH90dR4RZARtfzA0eED5-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="wMrsFuOgcD0PORIPJlcn-16" target="kH90dR4RZARtfzA0eED5-2">
+        <mxCell id="kH90dR4RZARtfzA0eED5-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="wMrsFuOgcD0PORIPJlcn-16" target="kH90dR4RZARtfzA0eED5-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="kH90dR4RZARtfzA0eED5-6" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="kH90dR4RZARtfzA0eED5-4">
+        <mxCell id="kH90dR4RZARtfzA0eED5-6" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="kH90dR4RZARtfzA0eED5-4" vertex="1" connectable="0">
           <mxGeometry x="-0.4" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kH90dR4RZARtfzA0eED5-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="wMrsFuOgcD0PORIPJlcn-16" target="wMrsFuOgcD0PORIPJlcn-13">
+        <mxCell id="kH90dR4RZARtfzA0eED5-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="wMrsFuOgcD0PORIPJlcn-16" target="wMrsFuOgcD0PORIPJlcn-13" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="750" y="540" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="kH90dR4RZARtfzA0eED5-8" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="kH90dR4RZARtfzA0eED5-7">
+        <mxCell id="kH90dR4RZARtfzA0eED5-8" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="kH90dR4RZARtfzA0eED5-7" vertex="1" connectable="0">
           <mxGeometry x="-0.6757" y="-3" relative="1" as="geometry">
             <mxPoint x="35" y="-3" as="offset" />
           </mxGeometry>
@@ -51,22 +51,22 @@
         <mxCell id="wMrsFuOgcD0PORIPJlcn-16" value="MOVIE.desc = None" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="340" y="480" width="120" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="kH90dR4RZARtfzA0eED5-2" value="Working day?" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+        <mxCell id="kH90dR4RZARtfzA0eED5-2" value="Working day?" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="50" y="600" width="120" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="kH90dR4RZARtfzA0eED5-10" value="Working day?" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+        <mxCell id="kH90dR4RZARtfzA0eED5-10" value="Working day?" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="210" y="780" width="120" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="kH90dR4RZARtfzA0eED5-11" value="Working day?" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+        <mxCell id="kH90dR4RZARtfzA0eED5-11" value="Working day?" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="-120" y="790" width="120" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="kH90dR4RZARtfzA0eED5-12" value="Working day?" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+        <mxCell id="kH90dR4RZARtfzA0eED5-12" value="Working day?" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="560" y="720" width="120" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="kH90dR4RZARtfzA0eED5-13" value="Working day?" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+        <mxCell id="kH90dR4RZARtfzA0eED5-13" value="Working day?" style="rhombus;whiteSpace=wrap;html=1;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="850" y="720" width="120" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="kH90dR4RZARtfzA0eED5-15" value="Relation between mood and vote" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="kH90dR4RZARtfzA0eED5-15" value="Relation between mood and vote" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-690" y="70" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="kH90dR4RZARtfzA0eED5-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="kH90dR4RZARtfzA0eED5-16">
@@ -74,7 +74,7 @@
             <mxPoint x="-339.4285714285711" y="480" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="kH90dR4RZARtfzA0eED5-16" value="Relation between mood and vote" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="kH90dR4RZARtfzA0eED5-16" value="Relation between mood and vote" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-400" y="70" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="l6ITB0ktixldAj-hyIiu-2" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="kH90dR4RZARtfzA0eED5-15">
@@ -92,6 +92,9 @@
               <mxPoint x="-390" y="200" />
             </Array>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="l6ITB0ktixldAj-hyIiu-4" value="asdasd" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="-510" y="584" width="80" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
