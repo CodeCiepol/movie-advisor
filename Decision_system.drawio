@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-04-16T20:25:22.529Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0" etag="6KKIl0FPAhQWFSzbPmVY" version="24.2.5" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-16T20:26:51.005Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0" etag="jWnbSFkKB3f3U4N7r8c6" version="24.2.5" type="github">
   <diagram name="Strona-1" id="ttXoSirOUBznSJBImnJa">
-    <mxGraphModel dx="2724" dy="861" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2114" dy="584" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -285,7 +285,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="kH90dR4RZARtfzA0eED5-154" value="i=0,&lt;br&gt;&lt;div&gt;n=5,&lt;/div&gt;&lt;div&gt;filmy=[]&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
-          <mxGeometry x="319" y="1190" width="160" height="70" as="geometry" />
+          <mxGeometry x="319" y="1200" width="160" height="70" as="geometry" />
         </mxCell>
         <mxCell id="kH90dR4RZARtfzA0eED5-155" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="kH90dR4RZARtfzA0eED5-154" target="kH90dR4RZARtfzA0eED5-154">
           <mxGeometry relative="1" as="geometry" />
@@ -309,18 +309,18 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="kH90dR4RZARtfzA0eED5-158" value="i&amp;lt;n?" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="349.1" y="1501" width="100" height="100" as="geometry" />
+          <mxGeometry x="349" y="1510" width="100" height="100" as="geometry" />
         </mxCell>
         <mxCell id="kH90dR4RZARtfzA0eED5-165" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="kH90dR4RZARtfzA0eED5-164">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="399" y="1280.0000000000002" as="targetPoint" />
+            <mxPoint x="399" y="1290" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="599" y="1280" />
+              <mxPoint x="599" y="1290" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="kH90dR4RZARtfzA0eED5-164" value="i+=1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="549" y="1370" width="100" height="60" as="geometry" />
+          <mxGeometry x="549" y="1390" width="100" height="60" as="geometry" />
         </mxCell>
         <mxCell id="kH90dR4RZARtfzA0eED5-171" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="kH90dR4RZARtfzA0eED5-169" target="kH90dR4RZARtfzA0eED5-170">
           <mxGeometry relative="1" as="geometry" />
@@ -341,13 +341,13 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="kH90dR4RZARtfzA0eED5-180" value="wylosuj gatunek" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="334.5" y="1300" width="129" height="60" as="geometry" />
+          <mxGeometry x="334.5" y="1310" width="129" height="60" as="geometry" />
         </mxCell>
         <mxCell id="kH90dR4RZARtfzA0eED5-184" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="kH90dR4RZARtfzA0eED5-182" target="kH90dR4RZARtfzA0eED5-158">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="kH90dR4RZARtfzA0eED5-182" value="wylosuj film,&lt;br&gt;dodaj film do tablicy" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="334.5" y="1400" width="129" height="60" as="geometry" />
+          <mxGeometry x="334.5" y="1410" width="129" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
