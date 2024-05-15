@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class MovieController {
@@ -47,7 +50,7 @@ public class MovieController {
             return movie;
         } catch (IOException | CsvException e) {
             e.printStackTrace();
-            return null; // Możesz obsłużyć błędy w dowolny sposób, np. zwracając pusty listę
+            return null;
         }
     }
 
@@ -61,18 +64,22 @@ public class MovieController {
         return true;
     }
 
+
     @GetMapping("/findMovie")
-    public Movie findBestMovie(
-            @RequestParam String frameOfMind,
+    public Map<String, String> findBestMovie(
+            @RequestParam String mood,
             @RequestParam String genre,
             @RequestParam boolean workingDay){
-        Movie movie = new Movie();
 
-        //logika wybierająca wybór filmu
+        Map<String, Double> decisionTree = new HashMap<>();
+        List<String> chooseGenres = new ArrayList<>();
+        Map<String, String> chooseMovies = new HashMap<>();
+
+        decisionTree = movieService.decisionTreeGenreProbabilityV2(mood, genre, workingDay);
+        chooseGenres = movieService.chooseGenres(decisionTree);
+        chooseMovies = movieService.chooseMovies(chooseGenres);
 
 
-        return movie;
+        return chooseMovies;
     }
-
-
 }

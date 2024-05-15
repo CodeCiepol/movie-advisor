@@ -13,6 +13,10 @@ public class Movie {
     float vote_average;
     String [] genres;
 
+    public Movie(String[] genres) {
+        this.genres = genres;
+    }
+
     public Movie(String title, int vote_average, String[] genres) {
         this.title = title;
         this.vote_average = vote_average;

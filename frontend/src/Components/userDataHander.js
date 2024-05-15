@@ -9,7 +9,7 @@ export default async function userDataHandler(userData) {
       throw new Error("Failed to fetch movie");
     }
     const resData = await response.json();
-    console.log("Browser receive:", resData);
+    console.log("Browser receive from server", resData);
   } catch (error) {
     console.log(error);
   }
