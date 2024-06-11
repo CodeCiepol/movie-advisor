@@ -55,7 +55,7 @@ public class gpt_prompt {
         try {
             String mood = userPreferences.getMood();
             String best_genre = userPreferences.getGenre();
-            String message_isUserWorkedToday = userPreferences.isWorkingDay()? ". User worked today.":". User doesn't worked today.";
+            String message_isUserWorkedToday = userPreferences.isWorkingDay()? ". User worked today.":". User didn't work today.";
             String movies = " " + String.join(", ", Movies) + ". ";
             String userInput = "You are an advisor. Which movie should the user watch today? "+"Available movies:" + movies + "User is " + mood + " and their best genre is " + best_genre + message_isUserWorkedToday + " Answer in JSON format: {'name': name of movie, 'description': only 1 sentence why this movie, use second person}. DO NOT add any new line command";
             String response = openAIService.sendRequest(userInput);
