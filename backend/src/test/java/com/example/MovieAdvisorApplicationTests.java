@@ -32,7 +32,7 @@ class MovieAdvisorApplicationTests {
 		gpt_prompt openAIService = new gpt_prompt();
 		UserPreferences userPreferences = new UserPreferences("sad","action",true);
 		try {
-			String response = openAIService.getOneMovie(userPreferences,List.of("Inception", "The Matrix", "Interstellar"));
+			JSONObject response = openAIService.getOneMovie(userPreferences,List.of("Inception", "The Matrix", "Interstellar"));
 			System.out.println(response);
 		}catch (IOException e) {
 			e.printStackTrace();

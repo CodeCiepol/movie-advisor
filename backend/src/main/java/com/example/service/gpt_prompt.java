@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.io.OutputStream;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.nio.charset.StandardCharsets;
@@ -19,17 +20,13 @@ public class gpt_prompt {
         Dotenv dotenv = Dotenv.load();
         this.apiKey = dotenv.get("API_KEY");
     }
+
     public String sendRequest(String userInput) throws IOException {
         String urlString = "https://api.openai.com/v1/chat/completions";
         String jsonInputString = new JSONObject()
-                .put("model", "gpt-3.5-turbo")
+                .put("model", "gpt-4o")
                 .put("messages", new JSONObject[]{new JSONObject().put("role", "user").put("content", userInput)})
                 .toString();
-//        version with modern langugage model (4o):
-//        String jsonInputString = new JSONObject()
-//                .put("model", "gpt-4o")
-//                .put("messages", new JSONObject[]{new JSONObject().put("role", "user").put("content", userInput)})
-//                .toString();
 
         URL url = new URL(urlString);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -53,15 +50,16 @@ public class gpt_prompt {
             throw new IOException("POST request failed with response code: " + responseCode);
         }
     }
-    public String getOneMovie(UserPreferences userPreferences, List<String> Movies) throws IOException {
+    public JSONObject getOneMovie(UserPreferences userPreferences, List<String> Movies) throws IOException {
         gpt_prompt openAIService = new gpt_prompt();
         try {
             String mood = userPreferences.getMood();
             String best_genre = userPreferences.getGenre();
             String message_isUserWorkedToday = userPreferences.isWorkingDay()? ". User worked today.":". User doesn't worked today.";
             String movies = " " + String.join(", ", Movies) + ". ";
-            String userInput = "You are an advisor. Which movie should the user watch today? "+"Available movies:" + movies + "User is " + mood + " and their best genre is " + best_genre + message_isUserWorkedToday + " Answer in JSON format: 'name': name of movie, 'description': only 1 sentence why this movie, use second person";
+            String userInput = "You are an advisor. Which movie should the user watch today? "+"Available movies:" + movies + "User is " + mood + " and their best genre is " + best_genre + message_isUserWorkedToday + " Answer in JSON format: {'name': name of movie, 'description': only 1 sentence why this movie, use second person}. DO NOT add any new line command";
             String response = openAIService.sendRequest(userInput);
+            System.out.println(response);
             JSONObject jsonResponse = new JSONObject(response);
             String contentString = jsonResponse.getJSONArray("choices").getJSONObject(0).getJSONObject("message").getString("content");
             JSONObject contentJson = new JSONObject(contentString);
@@ -69,7 +67,7 @@ public class gpt_prompt {
             String descriptionOfMovie = contentJson.getString("description");
 //            String descriptionOfMovie = jsonResponse.getJSONArray("choices").getJSONObject(0).getJSONObject("message").getJSONObject("content").getString("description");
             String reply = nameOfMovie + ": " + descriptionOfMovie;
-            return reply;
+            return contentJson;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
