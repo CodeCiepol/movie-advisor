@@ -3,3 +3,4 @@
 # dependencies
 /dataset
 /backend/src/main/resources/.env
+/.vscode
