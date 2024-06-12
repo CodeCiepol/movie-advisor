@@ -116,7 +116,6 @@ public class MovieService {
     }
 
     public List<String> chooseMovies(List<String> genresList) {
-
         List<String> chosenMovies = new ArrayList<>();
         List<String> allMovies = new ArrayList<>();
 
@@ -137,11 +136,13 @@ public class MovieService {
         for (String movie : allMovies) {
             String[] parts = movie.split(",");
             String title = parts[0];
+            double voteAverage = Double.parseDouble(parts[1]);
             String genres = parts[2].replaceAll("\"", "");
 
-            // Sprawdź, czy film zawiera którykolwiek z gatunków z genresList
+            // Sprawdź, czy film zawiera którykolwiek z gatunków z genresList i ma ocenę powyżej 7.0
             for (String genre : genresList) {
-                if (genres.contains(genre) && !chosenMovies.contains(title)) {
+
+                if (genres.contains(genre) && voteAverage > 7.0 && !chosenMovies.contains(title)) {
                     chosenMovies.add(title);
                     break;
                 }
@@ -151,12 +152,6 @@ public class MovieService {
             if (chosenMovies.size() == genresList.size()) {
                 break;
             }
-        }
-
-        // Utwórz mapę wyników
-        Map<String, String> result = new HashMap<>();
-        for (int i = 0; i < genresList.size(); i++) {
-            result.put(genresList.get(i), chosenMovies.get(i));
         }
 
         return chosenMovies;
