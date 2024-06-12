@@ -1,18 +1,18 @@
 package com.example.controller;
 
 import com.example.model.Movie;
+import com.example.model.UserPreferences;
 import com.example.service.MovieService;
+import com.example.service.gpt_prompt;
 import com.opencsv.exceptions.CsvException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 public class MovieController {
@@ -66,10 +66,10 @@ public class MovieController {
 
 
     @GetMapping("/findMovie")
-    public List<String> findBestMovie(
+    public String findBestMovie(
             @RequestParam String mood,
             @RequestParam String genre,
-            @RequestParam boolean workingDay){
+            @RequestParam boolean workingDay) {
 
         Map<String, Double> decisionTree = new HashMap<>();
         List<String> chooseGenres = new ArrayList<>();
@@ -79,7 +79,20 @@ public class MovieController {
         chooseGenres = movieService.chooseGenres(decisionTree);
         chooseMovies = movieService.chooseMovies(chooseGenres);
 
-
-        return chooseMovies;
+        UserPreferences userPreferences = new UserPreferences();
+        userPreferences.setMood(mood);
+        userPreferences.setGenre(genre);
+        userPreferences.setWorkingDay(workingDay);
+        gpt_prompt openAIService = new gpt_prompt();
+        try {
+            JSONObject response = openAIService.getOneMovie(userPreferences, chooseMovies);
+            return response.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        JSONObject error = new JSONObject();
+        error.put("name", "error");
+        error.put("description", "error");
+        return error.toString();
     }
 }

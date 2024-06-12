@@ -159,7 +159,7 @@ public class MovieService {
             result.put(genresList.get(i), chosenMovies.get(i));
         }
 
-        return genresList;
+        return chosenMovies;
     }
 
 }
