@@ -2,10 +2,11 @@ import { useState } from "react";
 
 import userDataHandler from "./userDataHander";
 
-const UserForm = () => {
+const UserForm = ({setMovieIsFound, setMovieData }) => {
   const [userMood, setUserMood] = useState("Happy");
   const [userGenre, setUserGenre] = useState("Drama");
   const [userWorkingDay, setuserWorkingDay] = useState(false);
+ 
 
   function submitHandler(event) {
     event.preventDefault();
@@ -14,13 +15,13 @@ const UserForm = () => {
       genre: userGenre,
       workingDay: userWorkingDay,
     };
-    userDataHandler(userData);
+    userDataHandler(userData, setMovieData, setMovieIsFound);
   }
 
   return (
     <form className="UserForm" onSubmit={submitHandler}>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <label htmlfor="mood">How are you today?</label>
+        <label htmlFor="mood">How are you today?</label>
         <select
           id="mood"
           name="mood"
@@ -42,7 +43,7 @@ const UserForm = () => {
           justifyContent: "space-between",
         }}
       >
-        <label htmlfor="genre">What genre do you like?</label>
+        <label htmlFor="genre">What genre do you like?</label>
         <select
           id="genre"
           name="genre"
@@ -64,7 +65,7 @@ const UserForm = () => {
           justifyContent: "space-between",
         }}
       >
-        <label htmlfor="workingDay">Did you work today?</label>
+        <label htmlFor="workingDay">Did you work today?</label>
         <div>
           <input
             type="checkbox"
@@ -76,7 +77,7 @@ const UserForm = () => {
               setuserWorkingDay(e.target.checked);
             }}
           />
-          <label htmlfor="workingDay">Worked</label>
+          <label htmlFor="workingDay">Worked</label>
         </div>
       </div>
       <button className="button-submit-UserForm">Find movie</button>

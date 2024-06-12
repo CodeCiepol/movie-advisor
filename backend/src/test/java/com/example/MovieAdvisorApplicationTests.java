@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.model.UserPreferences;
 import com.example.service.gpt_prompt;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -29,8 +30,20 @@ class MovieAdvisorApplicationTests {
 	@Test
 	void testGetOneMovie(){
 		gpt_prompt openAIService = new gpt_prompt();
+		UserPreferences userPreferences = new UserPreferences("sad","action",true);
 		try {
-			String response = openAIService.getOneMovie(List.of("Inception", "The Matrix", "Interstellar"));
+			JSONObject response = openAIService.getOneMovie(userPreferences,List.of("Inception", "The Matrix", "Interstellar"));
+			System.out.println(response);
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@Test
+	void testUserInput(){
+		gpt_prompt openAIService = new gpt_prompt();
+		UserPreferences userPreferences = new UserPreferences("sad","action",true);
+		try {
+			String response = openAIService.test(userPreferences,List.of("Inception", "The Matrix", "Interstellar"));
 			System.out.println(response);
 		}catch (IOException e) {
 			e.printStackTrace();
