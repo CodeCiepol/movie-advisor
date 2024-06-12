@@ -121,7 +121,7 @@ public class MovieService {
         List<String> allMovies = new ArrayList<>();
 
         // Wczytanie pliku CSV
-        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\dawid\\Desktop\\ISA\\semestr 3\\movie-recomendation-system\\movie-advisor\\dataset\\TMDB_movie_dataset_v2_filtered.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("dataset/TMDB_movie_dataset_v2_filtered.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 allMovies.add(line);
