@@ -55,14 +55,14 @@ class MovieServiceTest {
     }
 
     @Test
-    void chooseMovies (){
-
-        List<String> genresList = Arrays.asList("Drama", "Comedy", "Action", "Drama", "Comedy");
-        Set<String> chosenGenres = new HashSet<>();
-        Map<String, String> chosenMovies = new HashMap<>();
+    void chooseMovies() {
+        // Przygotowanie danych wejściowych
+        List<String> genresList = Arrays.asList("Drama", "Comedy", "Action", "Drama", "Comedy", "Drama", "Drama", "Drama");
+        List<String> chosenMovies = new ArrayList<>();
 
         List<String> allMovies = new ArrayList<>();
 
+        // Wczytanie pliku CSV
         try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\dawid\\Desktop\\ISA\\semestr 3\\movie-recomendation-system\\movie-advisor\\dataset\\TMDB_movie_dataset_v2_filtered.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -83,22 +83,63 @@ class MovieServiceTest {
 
             // Sprawdź, czy film zawiera którykolwiek z gatunków z genresList
             for (String genre : genresList) {
+                if (genres.contains(genre) && !chosenMovies.contains(title)) {
+                    chosenMovies.add(title);
+                    break;
+                }
+            }
+
+            // Jeśli znaleziono filmy dla wszystkich gatunków, przerwij pętlę
+            if (chosenMovies.size() == genresList.size()) {
+                break;
+            }
+        }
+
+        // Weryfikacja wyników
+        assertEquals(genresList.size(), chosenMovies.size());
+        System.out.println("Genres list: " + genresList);
+        System.out.println("Chosen movies: " + chosenMovies);
+    }
+
+
+    @Test
+    void choseMoviesv2(){
+
+        List<String> genresList = Arrays.asList("Drama", "Comedy", "Action", "Drama", "Comedy", "Drama", "Drama", "Drama");
+        Set<String> chosenGenres = new HashSet<>();
+        Map<String, String> chosenMovies = new HashMap<>();
+        List<String> allMovies = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\dawid\\Desktop\\ISA\\semestr 3\\movie-recomendation-system\\movie-advisor\\dataset\\TMDB_movie_dataset_v2_filtered.csv"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                allMovies.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Losowo przemieszaj listę filmów
+        Collections.shuffle(allMovies);
+        // Iteruj przez przemieszaną listę filmów
+        for (String movie : allMovies) {
+            String[] parts = movie.split(",");
+            String title = parts[0];
+            String genres = parts[2].replaceAll("\"", "");
+            // Sprawdź, czy film zawiera którykolwiek z gatunków z genresList
+            for (String genre : genresList) {
                 if (genres.contains(genre) && !chosenGenres.contains(genre)) {
                     chosenMovies.put(genre, title);
                     chosenGenres.add(genre);
                     break;
                 }
             }
-
             // Jeśli znaleziono film dla każdego gatunku, przerwij pętlę
             if (chosenGenres.size() == genresList.size()) {
                 break;
             }
         }
-
-
         System.out.println(genresList);
         System.out.println(chosenMovies);
 
     }
+
 }

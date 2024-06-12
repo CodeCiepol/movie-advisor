@@ -66,14 +66,14 @@ public class MovieController {
 
 
     @GetMapping("/findMovie")
-    public Map<String, String> findBestMovie(
+    public List<String> findBestMovie(
             @RequestParam String mood,
             @RequestParam String genre,
             @RequestParam boolean workingDay){
 
         Map<String, Double> decisionTree = new HashMap<>();
         List<String> chooseGenres = new ArrayList<>();
-        Map<String, String> chooseMovies = new HashMap<>();
+        List<String> chooseMovies = new ArrayList<>();
 
         decisionTree = movieService.decisionTreeGenreProbabilityV2(mood, genre, workingDay);
         chooseGenres = movieService.chooseGenres(decisionTree);

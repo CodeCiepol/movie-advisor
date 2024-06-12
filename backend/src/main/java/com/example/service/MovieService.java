@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
@@ -114,75 +115,51 @@ public class MovieService {
         return genresList;
     }
 
-    public Map<String, String> chooseMovies(List<String> genresList) {
+    public List<String> chooseMovies(List<String> genresList) {
 
-        Map<String, List<String>> moviesByGenre = new HashMap<>();
+        List<String> chosenMovies = new ArrayList<>();
+        List<String> allMovies = new ArrayList<>();
 
-        // Inicjalizacja list filmów dla każdego gatunku
-        for (String genre : genresList) {
-            moviesByGenre.put(genre, new ArrayList<>());
-        }
-
+        // Wczytanie pliku CSV
         try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\dawid\\Desktop\\ISA\\semestr 3\\movie-recomendation-system\\movie-advisor\\dataset\\TMDB_movie_dataset_v2_filtered.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                String title = parts[0];
-                String genres = parts[2].replaceAll("\"", "");
-
-                // Sprawdź, do którego gatunku należy film i dodaj go do odpowiedniej listy
-                for (String genre : genresList) {
-                    if (genres.contains(genre)) {
-                        moviesByGenre.get(genre).add(title);
-                        break; // Przerwij pętlę, gdy film zostanie dodany do listy dla danego gatunku
-                    }
-                }
+                allMovies.add(line);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Map<String, String> chosenMovies = new HashMap<>();
+        // Losowo przemieszaj listę filmów
+        Collections.shuffle(allMovies);
 
-        Random random = new Random();
+        // Iteruj przez przemieszaną listę filmów
+        for (String movie : allMovies) {
+            String[] parts = movie.split(",");
+            String title = parts[0];
+            String genres = parts[2].replaceAll("\"", "");
 
-        // Wybierz losowo filmy dla każdego gatunku
-        for (String genre : genresList) {
-            List<String> moviesForGenre = moviesByGenre.get(genre);
-            if (!moviesForGenre.isEmpty()) {
-                // Wybierz losowy film z listy dla danego gatunku
-                String randomMovie = moviesForGenre.get(random.nextInt(moviesForGenre.size()));
-                chosenMovies.put(genre, randomMovie);
-            }
-        }
-
-        return chosenMovies;
-    }
-
-    List<String> chooseMoviesv2 (List<String> genresList){
-         List<String> chosedMovies = new ArrayList<>();
-
-        String csvFile = "C:\\Users\\dawid\\Desktop\\ISA\\semestr 3\\movie-recomendation-system\\movie-advisor\\dataset\\TMDB_movie_dataset_v2_filtered.csv";
-
-
-        try (CSVReader reader = new CSVReader(new FileReader(csvFile))) {
-            List<String[]> rows = reader.readAll();
-
-            // Iterowanie po wierszach
-            for (String[] row : rows) {
-                // Dostęp do kolejnych kolumn
-                for (String column : row) {
-                    System.out.print(column + "\t");
+            // Sprawdź, czy film zawiera którykolwiek z gatunków z genresList
+            for (String genre : genresList) {
+                if (genres.contains(genre) && !chosenMovies.contains(title)) {
+                    chosenMovies.add(title);
+                    break;
                 }
-                System.out.println(); // Nowy wiersz po każdym wierszu CSV
             }
-        } catch (IOException | CsvException e) {
-            e.printStackTrace();
+
+            // Jeśli znaleziono filmy dla wszystkich gatunków, przerwij pętlę
+            if (chosenMovies.size() == genresList.size()) {
+                break;
+            }
         }
 
+        // Utwórz mapę wyników
+        Map<String, String> result = new HashMap<>();
+        for (int i = 0; i < genresList.size(); i++) {
+            result.put(genresList.get(i), chosenMovies.get(i));
+        }
 
-        return chosedMovies;
+        return genresList;
     }
-
 
 }
