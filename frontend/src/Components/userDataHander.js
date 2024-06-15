@@ -1,4 +1,5 @@
-export default async function userDataHandler(userData, setMovieData, setMovieIsFound) {
+export default async function userDataHandler(userData, setMovieData, setMovieIsFound, setIsLoading) {
+  setIsLoading(true);
   try {
     const response = await fetch(
       "http://localhost:8080/findMovie?" + new URLSearchParams(userData)
@@ -14,6 +15,7 @@ export default async function userDataHandler(userData, setMovieData, setMovieIs
   } catch (error) {
     console.log(error);
   }
+  setIsLoading(false);
 }
 
 // dummy version to save money on chatgpt:

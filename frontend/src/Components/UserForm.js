@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import userDataHandler from "./userDataHander";
 
-const UserForm = ({setMovieIsFound, setMovieData }) => {
+const UserForm = ({setMovieIsFound, setMovieData, isLoading, setIsLoading}) => {
   const [userMood, setUserMood] = useState("Happy");
   const [userGenre, setUserGenre] = useState("Drama");
   const [userWorkingDay, setuserWorkingDay] = useState(false);
@@ -15,7 +15,7 @@ const UserForm = ({setMovieIsFound, setMovieData }) => {
       genre: userGenre,
       workingDay: userWorkingDay,
     };
-    userDataHandler(userData, setMovieData, setMovieIsFound);
+    userDataHandler(userData, setMovieData, setMovieIsFound, setIsLoading);
   }
 
   return (
@@ -43,7 +43,7 @@ const UserForm = ({setMovieIsFound, setMovieData }) => {
           justifyContent: "space-between",
         }}
       >
-        <label htmlFor="genre">What genre do you like?</label>
+        <label htmlFor="genre">What is your best movie genre?</label>
         <select
           id="genre"
           name="genre"
@@ -80,7 +80,7 @@ const UserForm = ({setMovieIsFound, setMovieData }) => {
           <label htmlFor="workingDay">Worked</label>
         </div>
       </div>
-      <button className="button-submit-UserForm">Find movie</button>
+      <button disabled={isLoading} className="button-submit-UserForm">{isLoading ? "Finding movie..." : "Find movie"}</button>
     </form>
   );
 };
