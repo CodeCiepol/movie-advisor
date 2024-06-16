@@ -89,6 +89,68 @@ public class MovieService {
 
         return chosenGenres;
     }
+    public Map<String, Double> decisionTreeGenreProbabilityMatrix(int mood) {
+        // Define the emotion levels for each genre
+        Map<String, Map<String, Integer>> genres = new HashMap<>();
+
+        Map<String, Integer> drama = new HashMap<>();
+        drama.put("Joy", 33);
+        drama.put("Sadness", 32);
+        drama.put("Fear", 12);
+        drama.put("Disgust", 10);
+        drama.put("Anger", 13);
+        genres.put("Drama", drama);
+
+        Map<String, Integer> comedy = new HashMap<>();
+        comedy.put("Joy", 40);
+        comedy.put("Sadness", 27);
+        comedy.put("Fear", 11);
+        comedy.put("Disgust", 10);
+        comedy.put("Anger", 12);
+        genres.put("Comedy", comedy);
+
+        Map<String, Integer> action = new HashMap<>();
+        action.put("Joy", 25);
+        action.put("Sadness", 28);
+        action.put("Fear", 15);
+        action.put("Disgust", 13);
+        action.put("Anger", 19);
+        genres.put("Action", action);
+
+        // Define weights for each emotion based on mood
+        double[][] moodWeights = {
+                {0.0, 0.4, 0.3, 0.2, 0.1},  // Very negative
+                {0.1, 0.3, 0.3, 0.2, 0.1},
+                {0.2, 0.2, 0.3, 0.2, 0.1},
+                {0.3, 0.1, 0.2, 0.2, 0.2},
+                {0.4, 0.0, 0.1, 0.2, 0.3}   // Very positive
+        };
+
+        // Get the weights for the current mood
+        double[] weights = moodWeights[mood];
+
+        // Calculate the score for each genre
+        Map<String, Double> genreScores = new HashMap<>();
+        for (Map.Entry<String, Map<String, Integer>> genreEntry : genres.entrySet()) {
+            String genre = genreEntry.getKey();
+            Map<String, Integer> emotions = genreEntry.getValue();
+            double score = 0.0;
+            score += weights[0] * emotions.get("Joy");
+            score += weights[1] * emotions.get("Sadness");
+            score += weights[2] * emotions.get("Fear");
+            score += weights[3] * emotions.get("Disgust");
+            score += weights[4] * emotions.get("Anger");
+            genreScores.put(genre, score);
+        }
+
+        double totalScore = genreScores.values().stream().mapToDouble(Double::doubleValue).sum();
+        for (String genre : genreScores.keySet()) {
+            genreScores.put(genre, (genreScores.get(genre) / totalScore) * 100);
+        }
+
+        return genreScores;
+    }
+
 
     //function to chose movies
     public List<String> chooseGenres(Map<String, Double> chosenGenres){

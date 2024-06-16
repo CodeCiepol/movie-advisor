@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class MovieServiceTest {
@@ -140,6 +141,20 @@ class MovieServiceTest {
         System.out.println(genresList);
         System.out.println(chosenMovies);
 
+    }
+
+    @Test
+    void genre_generation(){
+        MovieService movieService = new MovieService();
+        Map<String, Double> decisionTree = new HashMap<>();
+        String mood = "Happy";
+        String favouriteGenre = "Action";
+        boolean workingDay = true;
+        decisionTree = movieService.decisionTreeGenreProbabilityV2(mood, favouriteGenre, workingDay);
+        System.out.println("stary program:\n"+decisionTree);
+        Map<String, Double> decisionMatrix = new HashMap<>();
+        decisionMatrix = movieService.decisionTreeGenreProbabilityMatrix(0);
+        System.out.println("nowy program:\n"+decisionMatrix);
     }
 
 }
