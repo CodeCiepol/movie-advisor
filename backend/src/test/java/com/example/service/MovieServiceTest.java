@@ -142,19 +142,51 @@ class MovieServiceTest {
         System.out.println(chosenMovies);
 
     }
-
+    // testing with weights(function with matrix
     @Test
     void genre_generation(){
+        String mood = "Happy";
+        int new_mood = 4;
+        String favouriteGenre = "Action";
+        double favouriteGenreFactor = 3;
+        boolean workingDay = true;
         MovieService movieService = new MovieService();
         Map<String, Double> decisionTree = new HashMap<>();
-        String mood = "Happy";
-        String favouriteGenre = "Action";
-        boolean workingDay = true;
         decisionTree = movieService.decisionTreeGenreProbabilityV2(mood, favouriteGenre, workingDay);
         System.out.println("stary program:\n"+decisionTree);
         Map<String, Double> decisionMatrix = new HashMap<>();
-        decisionMatrix = movieService.decisionTreeGenreProbabilityMatrix(0,"Drama", true);
+        decisionMatrix = movieService.decisionTreeGenreProbabilityMatrix(new_mood,favouriteGenre, workingDay,favouriteGenreFactor);
         System.out.println("nowy program:\n"+decisionMatrix);
+    }
+    @Test
+    void test_genre_stats(){
+        MovieService movieService = new MovieService();
+        Map<String, Map<String, Integer>> genres = new HashMap<>();
+
+        Map<String, Integer> drama = new HashMap<>();
+        drama.put("Joy", 33);
+        drama.put("Sadness", 32);
+        drama.put("Fear", 12);
+        drama.put("Disgust", 10);
+        drama.put("Anger", 13);
+        genres.put("Drama", drama);
+
+        Map<String, Integer> comedy = new HashMap<>();
+        comedy.put("Joy", 40);
+        comedy.put("Sadness", 27);
+        comedy.put("Fear", 11);
+        comedy.put("Disgust", 10);
+        comedy.put("Anger", 12);
+        genres.put("Comedy", comedy);
+
+        Map<String, Integer> action = new HashMap<>();
+        action.put("Joy", 25);
+        action.put("Sadness", 28);
+        action.put("Fear", 15);
+        action.put("Disgust", 13);
+        action.put("Anger", 19);
+        genres.put("Action", action);
+        System.out.println(Arrays.toString(movieService.getNormalizedGenreStatistics(genres, "Comedy")));
     }
 
 }

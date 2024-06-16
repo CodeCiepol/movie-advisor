@@ -10,6 +10,7 @@ import lombok.*;
 public class UserPreferences {
 
         private String mood;
+        private int moodInt;
         private String genre;
         private boolean workingDay;
 

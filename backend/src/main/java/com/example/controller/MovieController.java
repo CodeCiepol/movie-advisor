@@ -67,7 +67,7 @@ public class MovieController {
 
     @GetMapping("/findMovie")
     public String findBestMovie(
-            @RequestParam String mood,
+            @RequestParam int mood,
             @RequestParam String genre,
             @RequestParam boolean workingDay) {
 
@@ -76,12 +76,12 @@ public class MovieController {
         List<String> chooseMovies = new ArrayList<>();
 
 //        decisionTree = movieService.decisionTreeGenreProbabilityV2(mood, genre, workingDay);
-        decisionTree = movieService.decisionTreeGenreProbabilityMatrix(4,genre,workingDay);
+        decisionTree = movieService.decisionTreeGenreProbabilityMatrix(mood,genre,workingDay,1.4);
         chooseGenres = movieService.chooseGenres(decisionTree);
         chooseMovies = movieService.chooseMovies(chooseGenres);
 
         UserPreferences userPreferences = new UserPreferences();
-        userPreferences.setMood(mood);
+        userPreferences.setMoodInt(mood);
         userPreferences.setGenre(genre);
         userPreferences.setWorkingDay(workingDay);
         GptService openAIService = new GptService();

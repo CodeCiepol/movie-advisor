@@ -90,7 +90,25 @@ public class MovieService {
         return chosenGenres;
     }
 
-    public Map<String, Double> decisionTreeGenreProbabilityMatrix(int mood, String favouriteGenre, boolean workingDay) {
+    public double[] getNormalizedGenreStatistics(Map<String, Map<String, Integer>> genres, String genreName) {
+        if (genres.containsKey(genreName)) {
+            Map<String, Integer> genreStats = genres.get(genreName);
+            double sum = genreStats.values().stream().mapToDouble(Integer::doubleValue).sum();
+            double[] normalizedStats = new double[genreStats.size()];
+            normalizedStats[0]=genreStats.get("Joy")/sum;
+            normalizedStats[1]=genreStats.get("Sadness")/sum;
+            normalizedStats[2]=genreStats.get("Fear")/sum;
+            normalizedStats[3]=genreStats.get("Disgust")/sum;
+            normalizedStats[4]=genreStats.get("Anger")/sum;
+            System.out.println(Arrays.toString(normalizedStats));
+            return normalizedStats;
+        } else {
+            System.out.println("Genre not found: " + genreName);
+            return new double[0];
+        }
+    }
+
+    public Map<String, Double> decisionTreeGenreProbabilityMatrix(int mood, String favouriteGenre, boolean workingDay, double favouriteGenreFactor) {
 
         Map<String, Map<String, Integer>> genres = new HashMap<>();
 
@@ -118,7 +136,7 @@ public class MovieService {
         action.put("Anger", 19);
         genres.put("Action", action);
 
-        // Define weights for each emotion based on mood
+        // mood
         double[][] moodWeights = {
 //         {Joy, Sadness, Fear, Disgust, Anger}
 //              { J ,  S ,  F ,  D ,  A }
@@ -128,8 +146,9 @@ public class MovieService {
                 {0.2, 0.3, 0.2, 0.1, 0.2},
                 {0.1, 0.3, 0.2, 0.1, 0.3}   // Very positive
         };
-
         double[] weights = moodWeights[mood];
+
+        // working day
         if(workingDay) {
            double[] differenceAfterWork =  {0.1,0.1,-0.1, -0.1,0.0};
             for (int i = 0; i < weights.length; i++) {
@@ -141,6 +160,13 @@ public class MovieService {
             }
         }
 
+        //best genre
+        double[] bestGenreStats = getNormalizedGenreStatistics(genres,favouriteGenre);
+
+        for (int i = 0; i<weights.length;i++){
+            weights[i] += bestGenreStats[i] * favouriteGenreFactor;
+        }
+        System.out.println(Arrays.toString(weights));
         // Calculate the score for each genre
         Map<String, Double> genreScores = new HashMap<>();
         for (Map.Entry<String, Map<String, Integer>> genreEntry : genres.entrySet()) {

@@ -3,7 +3,7 @@ import { useState } from "react";
 import userDataHandler from "./userDataHander";
 
 const UserForm = ({setMovieIsFound, setMovieData, isLoading, setIsLoading}) => {
-  const [userMood, setUserMood] = useState("Happy");
+  const [userMood, setUserMood] = useState("4");
   const [userGenre, setUserGenre] = useState("Drama");
   const [userWorkingDay, setuserWorkingDay] = useState(false);
  
@@ -30,9 +30,9 @@ const UserForm = ({setMovieIsFound, setMovieData, isLoading, setIsLoading}) => {
           }}
           style={{ width: "5rem" }}
         >
-          <option value="Happy">Happy</option>
-          <option value="Sad">Sad</option>
-          <option value="Neutral">Neutral</option>
+          <option value="4">Happy</option>
+          <option value="0">Sad</option>
+          <option value="2">Neutral</option>
         </select>
       </div>
 

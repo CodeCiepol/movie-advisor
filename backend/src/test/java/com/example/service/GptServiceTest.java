@@ -29,7 +29,7 @@ class GptServiceTest {
 	@Test
 	void testGetOneMovie(){
 		GptService openAIService = new GptService();
-		UserPreferences userPreferences = new UserPreferences("sad","action",true);
+		UserPreferences userPreferences = new UserPreferences("sad",0,"action",true);
 		try {
 			JSONObject response = openAIService.getOneMovie(userPreferences,List.of("Inception", "The Matrix", "Interstellar"));
 			System.out.println(response);
@@ -40,7 +40,7 @@ class GptServiceTest {
 	@Test
 	void testUserInput(){
 		GptService openAIService = new GptService();
-		UserPreferences userPreferences = new UserPreferences("sad","action",true);
+		UserPreferences userPreferences = new UserPreferences("sad",0,"action",true);
 		try {
 			String response = openAIService.test(userPreferences,List.of("Inception", "The Matrix", "Interstellar"));
 			System.out.println(response);
