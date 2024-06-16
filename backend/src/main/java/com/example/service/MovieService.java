@@ -112,6 +112,7 @@ public class MovieService {
 
         Map<String, Map<String, Integer>> genres = new HashMap<>();
 
+        // Drama
         Map<String, Integer> drama = new HashMap<>();
         drama.put("Joy", 33);
         drama.put("Sadness", 32);
@@ -120,6 +121,7 @@ public class MovieService {
         drama.put("Anger", 13);
         genres.put("Drama", drama);
 
+        // Comedy
         Map<String, Integer> comedy = new HashMap<>();
         comedy.put("Joy", 40);
         comedy.put("Sadness", 27);
@@ -128,6 +130,7 @@ public class MovieService {
         comedy.put("Anger", 12);
         genres.put("Comedy", comedy);
 
+        // Action
         Map<String, Integer> action = new HashMap<>();
         action.put("Joy", 25);
         action.put("Sadness", 28);
@@ -135,6 +138,69 @@ public class MovieService {
         action.put("Disgust", 13);
         action.put("Anger", 19);
         genres.put("Action", action);
+
+        // Science Fiction
+        Map<String, Integer> scienceFiction = new HashMap<>();
+        scienceFiction.put("Joy", 26);
+        scienceFiction.put("Sadness", 28);
+        scienceFiction.put("Fear", 19);
+        scienceFiction.put("Disgust", 11);
+        scienceFiction.put("Anger", 16);
+        genres.put("Science Fiction", scienceFiction);
+
+        // Adventure
+        Map<String, Integer> adventure = new HashMap<>();
+        adventure.put("Joy", 35);
+        adventure.put("Sadness", 26);
+        adventure.put("Fear", 14);
+        adventure.put("Disgust", 10);
+        adventure.put("Anger", 15);
+        genres.put("Adventure", adventure);
+
+        // Crime
+        Map<String, Integer> crime = new HashMap<>();
+        crime.put("Joy", 20);
+        crime.put("Sadness", 26);
+        crime.put("Fear", 14);
+        crime.put("Disgust", 10);
+        crime.put("Anger", 15);
+        genres.put("Crime", crime);
+
+        // Thriller
+        Map<String, Integer> thriller = new HashMap<>();
+        thriller.put("Joy", 19);
+        thriller.put("Sadness", 30);
+        thriller.put("Fear", 15);
+        thriller.put("Disgust", 16);
+        thriller.put("Anger", 19);
+        genres.put("Thriller", thriller);
+
+        // Fantasy
+        Map<String, Integer> fantasy = new HashMap<>();
+        fantasy.put("Joy", 35);
+        fantasy.put("Sadness", 28);
+        fantasy.put("Fear", 14);
+        fantasy.put("Disgust", 9);
+        fantasy.put("Anger", 14);
+        genres.put("Fantasy", fantasy);
+
+        // Horror
+        Map<String, Integer> horror = new HashMap<>();
+        horror.put("Joy", 20);
+        horror.put("Sadness", 30);
+        horror.put("Fear", 23);
+        horror.put("Disgust", 12);
+        horror.put("Anger", 15);
+        genres.put("Horror", horror);
+
+        // Animation
+        Map<String, Integer> animation = new HashMap<>();
+        animation.put("Joy", 50);
+        animation.put("Sadness", 20);
+        animation.put("Fear", 12);
+        animation.put("Disgust", 7);
+        animation.put("Anger", 11);
+        genres.put("Animation", animation);
 
         // mood
         double[][] moodWeights = {
