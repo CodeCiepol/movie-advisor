@@ -13,9 +13,12 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <div className="container">
+
       <UserForm setMovieIsFound={setMovieIsFound} setMovieData={setMovieData} isLoading={isLoading} setIsLoading={setIsLoading} />
       {isLoading && <LoadingIcon/>}
       {movieIsFound && <MovieDescription movieData={movieData}/>}
+      </div>
     </div>
   );
 }
