@@ -1,7 +1,7 @@
 package com.example.controller;
 
 import com.example.model.UserPreferences;
-import com.example.service.gpt_prompt;
+import com.example.service.GptService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -41,7 +41,7 @@ public class TestController {
         userPreferences.setMood(mood);
         userPreferences.setGenre(genre);
         userPreferences.setWorkingDay(workingDay);
-        gpt_prompt openAIService = new gpt_prompt();
+        GptService openAIService = new GptService();
         try {
             JSONObject response = openAIService.getOneMovie(userPreferences, List.of("Inception", "The Matrix", "Interstellar"));
             return response.toString();

@@ -89,8 +89,9 @@ public class MovieService {
 
         return chosenGenres;
     }
-    public Map<String, Double> decisionTreeGenreProbabilityMatrix(int mood) {
-        // Define the emotion levels for each genre
+
+    public Map<String, Double> decisionTreeGenreProbabilityMatrix(int mood, String favouriteGenre, boolean workingDay) {
+
         Map<String, Map<String, Integer>> genres = new HashMap<>();
 
         Map<String, Integer> drama = new HashMap<>();
@@ -119,15 +120,26 @@ public class MovieService {
 
         // Define weights for each emotion based on mood
         double[][] moodWeights = {
-                {0.0, 0.4, 0.3, 0.2, 0.1},  // Very negative
-                {0.1, 0.3, 0.3, 0.2, 0.1},
-                {0.2, 0.2, 0.3, 0.2, 0.1},
-                {0.3, 0.1, 0.2, 0.2, 0.2},
-                {0.4, 0.0, 0.1, 0.2, 0.3}   // Very positive
+//         {Joy, Sadness, Fear, Disgust, Anger}
+//              { J ,  S ,  F ,  D ,  A }
+                {0.5, 0.2, 0.1, 0.0, 0.2},  // Very negative
+                {0.3, 0.2, 0.2, 0.0, 0.3},
+                {0.2, 0.2, 0.2, 0.1, 0.3}, //neutral
+                {0.2, 0.3, 0.2, 0.1, 0.2},
+                {0.1, 0.3, 0.2, 0.1, 0.3}   // Very positive
         };
 
-        // Get the weights for the current mood
         double[] weights = moodWeights[mood];
+        if(workingDay) {
+           double[] differenceAfterWork =  {0.1,0.1,-0.1, -0.1,0.0};
+            for (int i = 0; i < weights.length; i++) {
+                weights[i] += differenceAfterWork[i];
+                if (weights[i] <0){
+                    weights[i] = 0;
+                    weights[i-1] -= 0.1;
+                }
+            }
+        }
 
         // Calculate the score for each genre
         Map<String, Double> genreScores = new HashMap<>();

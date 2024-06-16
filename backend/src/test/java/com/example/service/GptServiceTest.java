@@ -1,7 +1,6 @@
-package com.example;
+package com.example.service;
 
 import com.example.model.UserPreferences;
-import com.example.service.gpt_prompt;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,14 +9,14 @@ import java.util.List;
 import java.io.IOException;
 
 @SpringBootTest
-class MovieAdvisorApplicationTests {
+class GptServiceTest {
 
 	@Test
 	void contextLoads() {
 	}
 	@Test
 	void testGptPrompt(){
-		gpt_prompt openAIService = new gpt_prompt();
+		GptService openAIService = new GptService();
 		try {
 			String response = openAIService.sendRequest("Rozumiesz język polski?");
 			JSONObject jsonResponse = new JSONObject(response);
@@ -29,7 +28,7 @@ class MovieAdvisorApplicationTests {
 	}
 	@Test
 	void testGetOneMovie(){
-		gpt_prompt openAIService = new gpt_prompt();
+		GptService openAIService = new GptService();
 		UserPreferences userPreferences = new UserPreferences("sad","action",true);
 		try {
 			JSONObject response = openAIService.getOneMovie(userPreferences,List.of("Inception", "The Matrix", "Interstellar"));
@@ -40,7 +39,7 @@ class MovieAdvisorApplicationTests {
 	}
 	@Test
 	void testUserInput(){
-		gpt_prompt openAIService = new gpt_prompt();
+		GptService openAIService = new GptService();
 		UserPreferences userPreferences = new UserPreferences("sad","action",true);
 		try {
 			String response = openAIService.test(userPreferences,List.of("Inception", "The Matrix", "Interstellar"));

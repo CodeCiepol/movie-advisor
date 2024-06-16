@@ -11,10 +11,10 @@ import org.json.JSONObject;
 import io.github.cdimascio.dotenv.Dotenv;
 
 
-public class gpt_prompt {
+public class GptService {
     private final String apiKey;
 
-    public gpt_prompt() {
+    public GptService() {
         Dotenv dotenv = Dotenv.load();
         this.apiKey = dotenv.get("API_KEY");
     }
@@ -49,7 +49,7 @@ public class gpt_prompt {
         }
     }
     public JSONObject getOneMovie(UserPreferences userPreferences, List<String> Movies) throws IOException {
-        gpt_prompt openAIService = new gpt_prompt();
+        GptService openAIService = new GptService();
         try {
             String mood = userPreferences.getMood();
             String best_genre = userPreferences.getGenre();
@@ -72,7 +72,7 @@ public class gpt_prompt {
         }
     }
     public String test(UserPreferences userPreferences, List<String> Movies) throws IOException {
-        gpt_prompt openAIService = new gpt_prompt();
+        GptService openAIService = new GptService();
             String mood = userPreferences.getMood();
             String best_genre = userPreferences.getGenre();
             String message_isUserWorkedToday = userPreferences.isWorkingDay()? ". User worked today.":". User didn't work today.";

@@ -3,7 +3,7 @@ package com.example.controller;
 import com.example.model.Movie;
 import com.example.model.UserPreferences;
 import com.example.service.MovieService;
-import com.example.service.gpt_prompt;
+import com.example.service.GptService;
 import com.opencsv.exceptions.CsvException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +76,7 @@ public class MovieController {
         List<String> chooseMovies = new ArrayList<>();
 
 //        decisionTree = movieService.decisionTreeGenreProbabilityV2(mood, genre, workingDay);
-        decisionTree = movieService.decisionTreeGenreProbabilityMatrix(4);
+        decisionTree = movieService.decisionTreeGenreProbabilityMatrix(4,genre,workingDay);
         chooseGenres = movieService.chooseGenres(decisionTree);
         chooseMovies = movieService.chooseMovies(chooseGenres);
 
@@ -84,7 +84,7 @@ public class MovieController {
         userPreferences.setMood(mood);
         userPreferences.setGenre(genre);
         userPreferences.setWorkingDay(workingDay);
-        gpt_prompt openAIService = new gpt_prompt();
+        GptService openAIService = new GptService();
         try {
             JSONObject response = openAIService.getOneMovie(userPreferences, chooseMovies);
             return response.toString();

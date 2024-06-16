@@ -153,7 +153,7 @@ class MovieServiceTest {
         decisionTree = movieService.decisionTreeGenreProbabilityV2(mood, favouriteGenre, workingDay);
         System.out.println("stary program:\n"+decisionTree);
         Map<String, Double> decisionMatrix = new HashMap<>();
-        decisionMatrix = movieService.decisionTreeGenreProbabilityMatrix(0);
+        decisionMatrix = movieService.decisionTreeGenreProbabilityMatrix(0,"Drama", true);
         System.out.println("nowy program:\n"+decisionMatrix);
     }
 
