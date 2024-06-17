@@ -76,7 +76,7 @@ public class MovieController {
         List<String> chooseMovies = new ArrayList<>();
 
 //        decisionTree = movieService.decisionTreeGenreProbabilityV2(mood, genre, workingDay);
-        decisionTree = movieService.decisionTreeGenreProbabilityMatrix(mood,genre,workingDay,1.4);
+        decisionTree = movieService.decisionTreeGenreProbabilityMatrix(mood,genre,workingDay,1.4,true);
         chooseGenres = movieService.chooseGenres(decisionTree);
         chooseMovies = movieService.chooseMovies(chooseGenres);
 

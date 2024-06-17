@@ -146,17 +146,23 @@ class MovieServiceTest {
     @Test
     void genre_generation(){
         String mood = "Happy";
-        int new_mood = 4;
-        String favouriteGenre = "Action";
-        double favouriteGenreFactor = 3;
-        boolean workingDay = true;
+        int new_mood = 2;
+        String favouriteGenre = "Drama";
+        double favouriteGenreFactor = 5;
+        boolean workingDay = false;
         MovieService movieService = new MovieService();
+
         Map<String, Double> decisionTree = new HashMap<>();
         decisionTree = movieService.decisionTreeGenreProbabilityV2(mood, favouriteGenre, workingDay);
         System.out.println("stary program:\n"+decisionTree);
+
         Map<String, Double> decisionMatrix = new HashMap<>();
-        decisionMatrix = movieService.decisionTreeGenreProbabilityMatrix(new_mood,favouriteGenre, workingDay,favouriteGenreFactor);
+        decisionMatrix = movieService.decisionTreeGenreProbabilityMatrix(new_mood,favouriteGenre, workingDay,favouriteGenreFactor,true);
         System.out.println("nowy program:\n"+decisionMatrix);
+
+        Map<String, Double> decisionMatrixGpt = new HashMap<>();
+        decisionMatrixGpt = movieService.decisionTreeGenreProbabilityMatrixGpt(new_mood,favouriteGenre, workingDay,favouriteGenreFactor);
+        System.out.println("nowy program gpt:\n"+decisionMatrixGpt);
     }
     @Test
     void test_genre_stats(){
