@@ -17,10 +17,12 @@
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  max-width: 600px;
+  width: 380px;
 }
 
-
+.container {
+  width: 410px;
+}
 
 .UserForm {
   background-color: #76819a;
@@ -100,6 +102,21 @@
   gap: 20px
 }
 
-.container {
-  width: 380px;
+
+datalist {
+  display: flex;
+  justify-content: space-between;
+  font-weight:lighter;
+  font-size:xx-small;
+
+}
+
+  option {
+    padding: 0;
+  }
+
+input[type="range"] {
+  width: 7rem;
+  margin: 0;
+  background: linear-gradient(to right, red, yellow, green);
 }

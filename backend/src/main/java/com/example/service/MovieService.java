@@ -232,7 +232,8 @@ public class MovieService {
         for (int i = 0; i<weights.length;i++){
             weights[i] += bestGenreStats[i] * favouriteGenreFactor;
         }
-        System.out.println("weights after best Genre:" + Arrays.toString(weights));
+//        System.out.println("weights after best Genre:" + Arrays.toString(weights));
+
         // Calculate the score for each genre
         Map<String, Double> genreScores = new HashMap<>();
         for (Map.Entry<String, Map<String, Integer>> genreEntry : genres.entrySet()) {
@@ -251,27 +252,18 @@ public class MovieService {
         for (String genre : genreScores.keySet()) {
             double normalizedScored = (genreScores.get(genre) / totalScore) * 100;
             if (isFocusOnFavouriteGenre){
-                System.out.println("score przed:" + normalizedScored);
                 normalizedScored -= 5;
                 if (normalizedScored <0){
                     normalizedScored = 0;
                 }
-                System.out.println("score po:" + normalizedScored);
             }
             if (Objects.equals(genre, favouriteGenre)){
                 normalizedScored +=5 * genres.size();
             }
             genreScores.put(genre,normalizedScored);
         }
-//        if (isFocusOnFavouriteGenre){
-//            System.out.println("Focus on Favourite Genre:" + genres.size());
-//            for (Map.Entry<String, Double> entry : genreScores.entrySet()) {
-//                String genre = entry.getKey();
-//                double score = entry.getValue();
-//                entry
-//            }
-//        }
-
+        System.out.println("Genre probabilities:");
+        System.out.println(genreScores);
         return genreScores;
     }
 

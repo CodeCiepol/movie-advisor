@@ -69,14 +69,15 @@ public class MovieController {
     public String findBestMovie(
             @RequestParam int mood,
             @RequestParam String genre,
-            @RequestParam boolean workingDay) {
+            @RequestParam boolean workingDay,
+            @RequestParam boolean isFocusOnFavouriteGenre) {
 
         Map<String, Double> decisionTree = new HashMap<>();
         List<String> chooseGenres = new ArrayList<>();
         List<String> chooseMovies = new ArrayList<>();
 
 //        decisionTree = movieService.decisionTreeGenreProbabilityV2(mood, genre, workingDay);
-        decisionTree = movieService.decisionTreeGenreProbabilityMatrix(mood,genre,workingDay,1.4,true);
+        decisionTree = movieService.decisionTreeGenreProbabilityMatrix(mood,genre,workingDay,1.4,isFocusOnFavouriteGenre);
         chooseGenres = movieService.chooseGenres(decisionTree);
         chooseMovies = movieService.chooseMovies(chooseGenres);
 
