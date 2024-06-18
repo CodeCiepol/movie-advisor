@@ -256,9 +256,9 @@ public class MovieService {
                 if (normalizedScored <0){
                     normalizedScored = 0;
                 }
-            }
             if (Objects.equals(genre, favouriteGenre)){
                 normalizedScored +=5 * genres.size();
+            }
             }
             genreScores.put(genre,normalizedScored);
         }

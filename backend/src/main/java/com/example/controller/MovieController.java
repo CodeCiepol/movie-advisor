@@ -76,16 +76,17 @@ public class MovieController {
         List<String> chooseGenres = new ArrayList<>();
         List<String> chooseMovies = new ArrayList<>();
 
-//        decisionTree = movieService.decisionTreeGenreProbabilityV2(mood, genre, workingDay);
-        decisionTree = movieService.decisionTreeGenreProbabilityMatrix(mood,genre,workingDay,1.4,isFocusOnFavouriteGenre);
-        chooseGenres = movieService.chooseGenres(decisionTree);
-        chooseMovies = movieService.chooseMovies(chooseGenres);
-
         UserPreferences userPreferences = new UserPreferences();
         userPreferences.setMoodInt(mood);
         userPreferences.setGenre(genre);
         userPreferences.setWorkingDay(workingDay);
         GptService openAIService = new GptService();
+
+//        decisionTree = movieService.decisionTreeGenreProbabilityV2(mood, genre, workingDay);
+        decisionTree = movieService.decisionTreeGenreProbabilityMatrix(mood,genre,workingDay,1.4,isFocusOnFavouriteGenre);
+        chooseGenres = movieService.chooseGenres(decisionTree);
+        chooseMovies = movieService.chooseMovies(chooseGenres);
+
         try {
             JSONObject response = openAIService.getOneMovie(userPreferences, chooseMovies);
             return response.toString();
