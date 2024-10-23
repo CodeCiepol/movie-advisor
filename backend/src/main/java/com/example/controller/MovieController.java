@@ -3,7 +3,7 @@ package com.example.controller;
 import com.example.model.Movie;
 import com.example.model.UserPreferences;
 import com.example.service.MovieService;
-import com.example.service.gpt_prompt;
+import com.example.service.GptService;
 import com.opencsv.exceptions.CsvException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,23 +67,26 @@ public class MovieController {
 
     @GetMapping("/findMovie")
     public String findBestMovie(
-            @RequestParam String mood,
+            @RequestParam int mood,
             @RequestParam String genre,
-            @RequestParam boolean workingDay) {
+            @RequestParam boolean workingDay,
+            @RequestParam boolean isFocusOnFavouriteGenre) {
 
         Map<String, Double> decisionTree = new HashMap<>();
         List<String> chooseGenres = new ArrayList<>();
         List<String> chooseMovies = new ArrayList<>();
 
-        decisionTree = movieService.decisionTreeGenreProbabilityV2(mood, genre, workingDay);
+        UserPreferences userPreferences = new UserPreferences();
+        userPreferences.setMoodInt(mood);
+        userPreferences.setGenre(genre);
+        userPreferences.setWorkingDay(workingDay);
+        GptService openAIService = new GptService();
+
+//        decisionTree = movieService.decisionTreeGenreProbabilityV2(mood, genre, workingDay);
+        decisionTree = movieService.decisionTreeGenreProbabilityMatrix(mood,genre,workingDay,1.4,isFocusOnFavouriteGenre);
         chooseGenres = movieService.chooseGenres(decisionTree);
         chooseMovies = movieService.chooseMovies(chooseGenres);
 
-        UserPreferences userPreferences = new UserPreferences();
-        userPreferences.setMood(mood);
-        userPreferences.setGenre(genre);
-        userPreferences.setWorkingDay(workingDay);
-        gpt_prompt openAIService = new gpt_prompt();
         try {
             JSONObject response = openAIService.getOneMovie(userPreferences, chooseMovies);
             return response.toString();

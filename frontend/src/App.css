@@ -17,10 +17,12 @@
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  max-width: 600px;
+  width: 380px;
 }
 
-
+.container {
+  width: 410px;
+}
 
 .UserForm {
   background-color: #76819a;
@@ -70,11 +72,51 @@
 
 .loading-icon {
   margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
   border: 8px solid #f3f3f3; /* Light grey */
   border-top: 8px solid #61dafb; /* Blue matching the button */
   border-radius: 50%;
   width: 60px;
   height: 60px;
   animation: spin 2s linear infinite;
-  /* margin: auto; */
+}
+
+.video-description {
+  background-color: #76819a;
+  border: 2px solid #61dafb; 
+  border-radius: 10px;
+  
+  box-sizing: border-box; 
+  padding: 20px;
+
+  width: 100%;
+  margin-top: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  font-weight: bold;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px
+}
+
+
+datalist {
+  display: flex;
+  justify-content: space-between;
+  font-weight:lighter;
+  font-size:xx-small;
+
+}
+
+  option {
+    padding: 0;
+  }
+
+input[type="range"] {
+  width: 7rem;
+  margin: 0;
+  background: linear-gradient(to right, red, yellow, green);
 }
